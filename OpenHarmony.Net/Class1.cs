@@ -1,8 +1,6 @@
-﻿using OpenHarmony.Sdk.HiLog;
-using OpenHarmony.Sdk.NodeApi;
+﻿using OpenHarmony.Sdk.Native;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace OpenHarmony.Net;
 
@@ -34,7 +32,7 @@ public class Class1
             reserved_3 = null,
         };
 
-        NativeApi.napi_module_register(&demoModule);
+        ace_napi.napi_module_register(&demoModule);
     }
 
     [UnmanagedCallersOnly(CallConvs = [typeof(CallConvCdecl)])]
@@ -46,7 +44,7 @@ public class Class1
             ];
         fixed(napi_property_descriptor* p = desc)
         {
-            NativeApi.napi_define_properties(env, exports, 1, p);
+            ace_napi.napi_define_properties(env, exports, 1, p);
         }
         Marshal.FreeHGlobal(methodName);
         return exports;
@@ -60,23 +58,23 @@ public class Class1
         napi_value*[] args = [null, null];
         fixed (napi_value** p = args)
         {
-            NativeApi.napi_get_cb_info(env, info, &argc, p, null, null);
+            ace_napi.napi_get_cb_info(env, info, &argc, p, null, null);
         }
 
         napi_valuetype valuetype0;
-        NativeApi.napi_typeof(env, args[0], &valuetype0);
+        ace_napi.napi_typeof(env, args[0], &valuetype0);
 
         napi_valuetype valuetype1;
-        NativeApi.napi_typeof(env, args[1], &valuetype1);
+        ace_napi.napi_typeof(env, args[1], &valuetype1);
 
         double value0;
-        NativeApi.napi_get_value_double(env, args[0], &value0);
+        ace_napi.napi_get_value_double(env, args[0], &value0);
 
         double value1;
-        NativeApi.napi_get_value_double(env, args[1], &value1);
+        ace_napi.napi_get_value_double(env, args[1], &value1);
 
         napi_value* sum;
-        NativeApi.napi_create_double(env, value0 + value1, &sum);
+        ace_napi.napi_create_double(env, value0 + value1, &sum);
 
         return sum;
 

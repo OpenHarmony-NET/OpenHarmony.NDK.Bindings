@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices;
 
-namespace OpenHarmony.Sdk.NodeApi;
+namespace OpenHarmony.Sdk.Native;
 
-public static unsafe partial class NativeApi
+public static unsafe partial class ace_napi
 {
     [LibraryImport("libace_napi.z.so")]
     public static partial void napi_module_register(napi_module* module);
@@ -42,7 +37,6 @@ public static unsafe partial class NativeApi
     [LibraryImport("libace_napi.z.so")]
     public static partial napi_status napi_typeof(napi_env* env, napi_value* value, napi_valuetype* result);
 
-
     [LibraryImport("libace_napi.z.so")]
     public static partial napi_status napi_get_value_double(napi_env* env, napi_value* value, double* result);
 
@@ -69,4 +63,10 @@ public static unsafe partial class NativeApi
 
     [LibraryImport("libace_napi.z.so")]
     public static partial napi_status napi_create_int64(napi_env* env, long value, napi_value** result);
+
+    [LibraryImport("libace_napi.z.so")]
+    public static partial napi_status napi_get_named_property(napi_env* env, napi_value* @object, sbyte* utf8name, napi_value** result);
+
+    [LibraryImport("libace_napi.z.so")]
+    public static partial napi_status napi_unwrap(napi_env* env, napi_value* js_object, void** result);
 }

@@ -1,16 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices;
 
-namespace OpenHarmony.Sdk.HiLog;
+namespace OpenHarmony.Sdk.Native;
 
 public unsafe static partial class Hilog
 {
     [LibraryImport("libhilog.so")]
     public  static partial int HiLogPrint(LogType type, LogLevel level, uint domain, sbyte* tag, sbyte* msg);
+
+    public static int OH_LOG_DEBUG(LogType type, string tag, string message)
+    {
+        var ptag = Marshal.StringToHGlobalAnsi(tag);
+        var pmsg = Marshal.StringToHGlobalAnsi(message);
+        var ret = HiLogPrint(type, LogLevel.LOG_DEBUG, 0, (sbyte*)ptag, (sbyte*)pmsg);
+        Marshal.FreeHGlobal(ptag);
+        Marshal.FreeHGlobal(pmsg);
+        return ret;
+    }
 }
 
 
