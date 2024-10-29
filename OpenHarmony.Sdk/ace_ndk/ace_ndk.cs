@@ -50,7 +50,7 @@ public unsafe static partial class ace_ndk
     public static partial int OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component, ArkUI_Node* root);
 
     [LibraryImport("libace_ndk.z.so")]
-    public static partial int OH_NativeXComponent_GetXComponentSize(OH_NativeXComponent* component, void* window, ulong width, ulong height);
+    public static partial int OH_NativeXComponent_GetXComponentSize(OH_NativeXComponent* component, void* window, ulong* width, ulong* height);
 
     [LibraryImport("libace_ndk.z.so")]
     public static partial int OH_NativeXComponent_GetXComponentOffset(OH_NativeXComponent* component, void* window, double* x, double* y);
