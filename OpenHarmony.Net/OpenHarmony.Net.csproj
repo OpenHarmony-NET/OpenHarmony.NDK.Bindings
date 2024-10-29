@@ -10,7 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PublishAotCross" Version="1.0.0" />
+	  <PackageReference Include="Avalonia.Skia" Version="11.1.4" />
+	  <PackageReference Include="PublishAotCross" Version="1.0.0" />
+	  <PackageReference Include="Silk.NET.OpenGLES" Version="2.21.0" />
   </ItemGroup>
 
   <ItemGroup>
