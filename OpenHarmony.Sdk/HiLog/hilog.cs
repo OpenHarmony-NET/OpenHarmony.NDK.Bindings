@@ -10,25 +10,25 @@ public unsafe static partial class Hilog
 
     public static int OH_LOG_DEBUG(LogType type, string tag, string message)
     {
-        return OH_LOF_PRINT(type,  LogLevel.LOG_DEBUG,  tag, message);
+        return OH_LOG_PRINT(type,  LogLevel.LOG_DEBUG,  tag, message);
     }
     public static int OH_LOG_ERROR(LogType type, string tag, string message)
     {
-        return OH_LOF_PRINT(type, LogLevel.LOG_ERROR, tag, message);
+        return OH_LOG_PRINT(type, LogLevel.LOG_ERROR, tag, message);
     }
     public static int OH_LOG_INFO(LogType type, string tag, string message)
     {
-        return OH_LOF_PRINT(type, LogLevel.LOG_INFO, tag, message);
+        return OH_LOG_PRINT(type, LogLevel.LOG_INFO, tag, message);
     }
     public static int OH_LOG_WARN(LogType type, string tag, string message)
     {
-        return OH_LOF_PRINT(type, LogLevel.LOG_WARN, tag, message);
+        return OH_LOG_PRINT(type, LogLevel.LOG_WARN, tag, message);
     }
     public static int OH_LOG_FATAL(LogType type, string tag, string message)
     {
-        return OH_LOF_PRINT(type, LogLevel.LOG_FATAL, tag, message);
+        return OH_LOG_PRINT(type, LogLevel.LOG_FATAL, tag, message);
     }
-    public static int OH_LOF_PRINT(LogType type, LogLevel level, string tag, string message)
+    public static int OH_LOG_PRINT(LogType type, LogLevel level, string tag, string message)
     {
         var ptag = Marshal.StringToHGlobalAnsi(tag);
         var pmsg = Marshal.StringToHGlobalAnsi(message);
