@@ -1,4 +1,6 @@
-﻿namespace OpenHarmony.Sdk.Native;
+﻿using System;
+
+namespace OpenHarmony.Sdk.Native;
 
 
 public struct OH_NativeXComponent
@@ -52,7 +54,99 @@ public struct OH_NativeXComponent_ExpectedRateRange
     public int max;
     public int expected;
 }
-;
+
+public struct OH_NativeXComponent_TouchEvent
+{
+    public int id;
+    public float screenX;
+    public float screenY;
+    public float x;
+    public float y;
+    public OH_NativeXComponent_TouchEventType type;
+    public double size;
+    public float force;
+    public long deviceId;
+    public long timeStamp;
+    public OH_NativeXComponent_TouchPoint_Array touchPoints;
+    public uint numPoints;
+}
+
+[System.Runtime.CompilerServices.InlineArray(10)]
+public struct OH_NativeXComponent_TouchPoint_Array
+{
+    private OH_NativeXComponent_TouchPoint _element0;
+}
+
+public enum OH_NATIVEXCOMPONENT_RESULT 
+{
+    /** Successful. */
+    SUCCESS = 0,
+    /** Failed. */
+    FAILED = -1,
+    /** Invalid parameters. */
+    BAD_PARAMETER = -2,
+};
+
+public struct OH_NativeXComponent_TouchPoint
+{
+    /** Unique identifier of a finger. */
+    public int id;
+    /** X coordinate of the touch point relative to the left edge of the screen. */
+    public float screenX;
+    /** Y coordinate of the touch point relative to the upper edge of the screen. */
+    public float screenY;
+    /** X coordinate of the touch point relative to the left edge of the element to touch. */
+    public float x;
+    /** Y coordinate of the touch point relative to the upper edge of the element to touch. */
+    public float y;
+    /** Touch type of the touch event. */
+    public OH_NativeXComponent_TouchEventType type;
+    /** Contact area between the finger pad and the screen. */
+    public double size;
+    /** Pressure of the current touch event. */
+    public float force;
+    /** Timestamp of the current touch event. */
+    public long timeStamp;
+    /** Whether the current point is pressed. */
+    public bool isPressed;
+}
+
+public enum OH_NativeXComponent_TouchEventType
+{
+    /** Trigger a touch event when a finger is pressed. */
+    OH_NATIVEXCOMPONENT_DOWN = 0,
+    /** Trigger a touch event when a finger is lifted. */
+    OH_NATIVEXCOMPONENT_UP,
+    /** Trigger a touch event when a finger moves on the screen in pressed state. */
+    OH_NATIVEXCOMPONENT_MOVE,
+    /** Trigger an event when a touch event is canceled. */
+    OH_NATIVEXCOMPONENT_CANCEL,
+    /** Invalid touch type. */
+    OH_NATIVEXCOMPONENT_UNKNOWN,
+}
+
+public enum OH_NativeXComponent_TouchPointToolType
+{
+    /** Indicates invalid tool type. */
+    OH_NATIVEXCOMPONENT_TOOL_TYPE_UNKNOWN = 0,
+    /** Indicates a finger. */
+    OH_NATIVEXCOMPONENT_TOOL_TYPE_FINGER,
+    /** Indicates a stylus. */
+    OH_NATIVEXCOMPONENT_TOOL_TYPE_PEN,
+    /** Indicates a eraser. */
+    OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER,
+    /** Indicates a brush. */
+    OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH,
+    /** Indicates a pencil. */
+    OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL,
+    /** Indicates a brush. */
+    OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH,
+    /** Indicates a mouse. */
+    OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE,
+    /** Indicates a lens. */
+    OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS,
+}
+
 public enum OH_NativeXComponent_KeyCode
 {
     KEY_UNKNOWN = -1,

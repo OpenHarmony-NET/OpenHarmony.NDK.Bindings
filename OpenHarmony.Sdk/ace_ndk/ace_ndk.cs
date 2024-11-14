@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 
 namespace OpenHarmony.Sdk.Native;
 
@@ -59,6 +60,15 @@ public unsafe static partial class ace_ndk
     public static partial int OH_NativeXComponent_GetXComponentId(OH_NativeXComponent* component, sbyte* id, ulong* size);
 
 
+    [LibraryImport("libace_ndk.z.so")]
+    public static partial int OH_NativeXComponent_GetTouchEvent(OH_NativeXComponent* component, void* window, OH_NativeXComponent_TouchEvent* touchEvent);
 
+    [LibraryImport("libace_ndk.z.so")]
+    public static partial int OH_NativeXComponent_GetTouchPointToolType(OH_NativeXComponent* component, uint pointIndex, OH_NativeXComponent_TouchPointToolType* toolType);
+
+    [LibraryImport("libace_ndk.z.so")]
+    public static partial int OH_NativeXComponent_GetTouchPointTiltX(OH_NativeXComponent* component, uint pointIndex, float* tiltX);
+    [LibraryImport("libace_ndk.z.so")]
+    public static partial int OH_NativeXComponent_GetTouchPointTiltY(OH_NativeXComponent* component, uint pointIndex, float* tiltY);
 
 }
