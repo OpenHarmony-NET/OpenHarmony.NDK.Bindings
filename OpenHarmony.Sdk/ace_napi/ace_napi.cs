@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 
 namespace OpenHarmony.Sdk.Native;
 
@@ -8,65 +9,82 @@ public static unsafe partial class ace_napi
     public static partial void napi_module_register(napi_module* module);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_fatal_exception(napi_env* env, napi_value* err);
+    public static partial napi_status napi_fatal_exception(napi_env env, napi_value err);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_create_string_utf16(napi_env* env, char* str, ulong length, napi_value** result);
+    public static partial napi_status napi_create_string_utf16(napi_env env, char* str, ulong length, napi_value* result);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_get_value_string_utf16(napi_env* env, napi_value* value, char* buf, ulong bufsize, ulong* result);
+    public static partial napi_status napi_get_value_string_utf16(napi_env env, napi_value value, char* buf, ulong bufsize, ulong* result);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_type_tag_object(napi_env* env, napi_value value, napi_type_tag* type_tag);
+    public static partial napi_status napi_type_tag_object(napi_env env, napi_value value, napi_type_tag* type_tag);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_run_script_path(napi_env* env, sbyte* path, napi_value** result);
+    public static partial napi_status napi_run_script_path(napi_env env, sbyte* path, napi_value* result);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_queue_async_work_with_qos(napi_env* env, napi_async_work* work, napi_qos_t qos);
+    public static partial napi_status napi_queue_async_work_with_qos(napi_env env, napi_async_work work, napi_qos_t qos);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_load_module(napi_env* env, sbyte* path, napi_value** result);
+    public static partial napi_status napi_load_module(napi_env env, sbyte* path, napi_value* result);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_define_properties(napi_env* env, napi_value* @object, ulong property_count, napi_property_descriptor* properties);
+    public static partial napi_status napi_define_properties(napi_env env, napi_value @object, ulong property_count, napi_property_descriptor* properties);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_get_cb_info(napi_env* env, napi_callback_info* cbinfo, ulong* argc, napi_value** argv, napi_value** this_arg, void** data);
+    public static partial napi_status napi_get_cb_info(napi_env env, napi_callback_info cbinfo, ulong* argc, napi_value* argv, napi_value* this_arg, void** data);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_typeof(napi_env* env, napi_value* value, napi_valuetype* result);
+    public static partial napi_status napi_typeof(napi_env env, napi_value value, napi_valuetype* result);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_get_value_double(napi_env* env, napi_value* value, double* result);
+    public static partial napi_status napi_get_value_double(napi_env env, napi_value value, double* result);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_get_value_int32(napi_env* env, napi_value* value, int* result);
+    public static partial napi_status napi_get_value_int32(napi_env env, napi_value value, int* result);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_get_value_uint32(napi_env* env, napi_value* value, uint* result);
+    public static partial napi_status napi_get_value_uint32(napi_env env, napi_value value, uint* result);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_get_value_int64(napi_env* env, napi_value* value, long* result);
+    public static partial napi_status napi_get_value_int64(napi_env env, napi_value value, long* result);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_get_value_bool(napi_env* env, napi_value* value, bool* result);
+    public static partial napi_status napi_get_value_bool(napi_env env, napi_value value, bool* result);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_create_double(napi_env* env, double value, napi_value** result);
+    public static partial napi_status napi_create_double(napi_env env, double value, napi_value* result);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_create_int32(napi_env* env, int value, napi_value** result);
+    public static partial napi_status napi_create_int32(napi_env env, int value, napi_value* result);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_create_uint32(napi_env* env, uint value, napi_value** result);
+    public static partial napi_status napi_create_uint32(napi_env env, uint value, napi_value* result);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_create_int64(napi_env* env, long value, napi_value** result);
+    public static partial napi_status napi_create_int64(napi_env env, long value, napi_value* result);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_get_named_property(napi_env* env, napi_value* @object, sbyte* utf8name, napi_value** result);
+    public static partial napi_status napi_get_named_property(napi_env env, napi_value @object, sbyte* utf8name, napi_value* result);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_unwrap(napi_env* env, napi_value* js_object, void** result);
+    public static partial napi_status napi_unwrap(napi_env env, napi_value js_object, void** result);
+
+    [LibraryImport("libace_napi.z.so")]
+    public static partial napi_status napi_get_property_names(napi_env env, napi_value @object, napi_value* result);
+
+    [LibraryImport("libace_napi.z.so")]
+    public static partial napi_status napi_get_array_length(napi_env env, napi_value value, uint* result);
+
+    [LibraryImport("libace_napi.z.so")]
+    public static partial napi_status napi_get_element(napi_env env,  napi_value @object, uint index, napi_value* result);
+
+    [LibraryImport("libace_napi.z.so")]
+    public static partial napi_status napi_get_value_string_utf8(napi_env env, napi_value value, sbyte* buf, ulong bufsize, ulong* result);
+
+    [LibraryImport("libace_napi.z.so")]
+    public static partial napi_status napi_get_property(napi_env env, napi_value @object, napi_value key, napi_value* result);
+
+
 }

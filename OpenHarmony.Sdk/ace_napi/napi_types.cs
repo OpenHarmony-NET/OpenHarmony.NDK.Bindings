@@ -5,7 +5,7 @@ public unsafe struct napi_module
     public int nm_version;
     public uint nm_flags;
     public sbyte* nm_filename;
-    public delegate* unmanaged[Cdecl]<napi_env*, napi_value*, napi_value*> napi_addon_register_func;
+    public delegate* unmanaged[Cdecl]<napi_env, napi_value, napi_value> napi_addon_register_func;
     public sbyte* nm_modname;
     public void* nm_priv;
 
@@ -17,35 +17,35 @@ public unsafe struct napi_module
 
 public struct napi_value
 {
-
+    public nint Pointer;
 }
 public struct napi_env
 {
-
+    public nint Pointer;
 }
 public struct napi_ref
 {
-
+    public nint Pointer;
 }
 public struct napi_handle_scope
 {
-
+    public nint Pointer;
 }
 public struct napi_escapable_handle_scope
 {
-
+    public nint Pointer;
 }
 public struct napi_callback_info
 {
-
+    public nint Pointer;
 }
 public struct napi_deferred
 {
-
+    public nint Pointer;
 }
 public struct napi_async_work
 {
-
+    public nint Pointer;
 }
 
 public enum napi_status
@@ -94,11 +94,11 @@ public enum napi_qos_t
 public unsafe struct napi_property_descriptor
 {
     public sbyte* utf8name;
-    public napi_value* name;
-    public delegate* unmanaged[Cdecl]<napi_env*, napi_callback_info*, napi_value*> method;
-    public delegate* unmanaged[Cdecl]<napi_env*, napi_callback_info*, napi_value*> getter;
-    public delegate* unmanaged[Cdecl]<napi_env*, napi_callback_info*, napi_value*> setter;
-    public napi_value* value;
+    public napi_value name;
+    public delegate* unmanaged[Cdecl]<napi_env, napi_callback_info, napi_value> method;
+    public delegate* unmanaged[Cdecl]<napi_env, napi_callback_info, napi_value> getter;
+    public delegate* unmanaged[Cdecl]<napi_env, napi_callback_info, napi_value> setter;
+    public napi_value value;
     public napi_property_attributes attributes;
     public void* data;
 };
