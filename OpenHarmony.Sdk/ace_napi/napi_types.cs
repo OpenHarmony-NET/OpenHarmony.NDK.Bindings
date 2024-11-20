@@ -1,4 +1,6 @@
-﻿namespace OpenHarmony.Sdk.Native;
+﻿using System;
+
+namespace OpenHarmony.Sdk.Native;
 
 public unsafe struct napi_module
 {
@@ -48,6 +50,10 @@ public struct napi_async_work
     public nint Pointer;
 }
 
+public struct napi_async_context
+{
+    public nint Pointer;
+}
 public enum napi_status
 {
     napi_ok,
@@ -126,5 +132,13 @@ public enum napi_valuetype
     napi_function,
     napi_external,
     napi_bigint,
+}
+
+public unsafe struct napi_extended_error_info
+{
+    public sbyte* error_message;
+    public void* engine_reserved;
+    public uint engine_error_code;
+    public napi_status error_code;
 }
 ;
