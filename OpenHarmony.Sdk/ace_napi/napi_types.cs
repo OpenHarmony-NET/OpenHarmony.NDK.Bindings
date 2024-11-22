@@ -141,4 +141,40 @@ public unsafe struct napi_extended_error_info
     public uint engine_error_code;
     public napi_status error_code;
 }
-;
+
+public enum napi_typedarray_type
+{
+    napi_int8_array,
+    napi_uint8_array,
+    napi_uint8_clamped_array,
+    napi_int16_array,
+    napi_uint16_array,
+    napi_int32_array,
+    napi_uint32_array,
+    napi_float32_array,
+    napi_float64_array,
+    napi_bigint64_array,
+    napi_biguint64_array,
+}
+
+public enum napi_key_collection_mode
+{
+    napi_key_include_prototypes,
+    napi_key_own_only
+}
+
+public enum napi_key_filter
+{
+    napi_key_all_properties = 0,
+    napi_key_writable = 1,
+    napi_key_enumerable = 1 << 1,
+    napi_key_configurable = 1 << 2,
+    napi_key_skip_strings = 1 << 3,
+    napi_key_skip_symbols = 1 << 4
+}
+
+public enum napi_key_conversion
+{
+    napi_key_keep_numbers,
+    napi_key_numbers_to_strings
+}

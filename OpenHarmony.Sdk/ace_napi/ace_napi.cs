@@ -613,7 +613,7 @@ napi_create_external_arraybuffer(napi_env env,
     // Object
     [LibraryImport("libace_napi.z.so")]
     public static partial napi_status napi_get_all_property_names(napi_env env,
-                            napi_value object,
+                            napi_value @object,
                             napi_key_collection_mode key_mode,
                             napi_key_filter key_filter,
                             napi_key_conversion key_conversion,
