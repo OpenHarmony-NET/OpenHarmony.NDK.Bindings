@@ -147,4 +147,19 @@ public unsafe static partial class input_method
     [LibraryImport("libohinputmethod.so")]
     public static partial InputMethod_ErrorCode OH_TextConfig_GetWindowId(InputMethod_TextConfig* config, int* windowId);
 
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_TextEditorProxy* OH_TextEditorProxy_Create();
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial void OH_TextEditorProxy_Destroy(InputMethod_TextEditorProxy* proxy);
+    
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetGetTextConfigFunc(InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, InputMethod_TextConfig*, void> getTextConfigFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetInsertTextFunc(InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, char*, ulong, void> insertTextFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetDeleteForwardFunc(InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, int, void> insertTextFunc);
+
 }
