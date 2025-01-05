@@ -6,6 +6,7 @@
 
 最近我拿到HarmonyOS真机，发现由于一些列的限制导致无法运行，正在对多个.NET运行时尝试中。
 
+
 NativeAot与CoreCLR相关问题:
 https://github.com/dotnet/runtime/issues/110074
 
@@ -14,5 +15,7 @@ https://github.com/dotnet/runtime/issues/111012
 
 
 如果有兴趣帮忙，欢迎联系：
+
 QQ: 709653366
+
 Discord: cesun
