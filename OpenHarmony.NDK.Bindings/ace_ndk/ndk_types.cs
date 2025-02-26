@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OpenHarmony.Sdk.Native;
+namespace OpenHarmony.NDK.Bindings.Native;
 
 
 public struct OH_NativeXComponent

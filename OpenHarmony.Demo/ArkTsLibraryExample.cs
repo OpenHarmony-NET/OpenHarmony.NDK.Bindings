@@ -1,4 +1,4 @@
-﻿using OpenHarmony.Sdk.Native;
+﻿using OpenHarmony.NDK.Bindings.Native;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +11,11 @@ namespace OpenHarmony.Net;
 
 public unsafe static class ArkTsLibraryExample
 {
-    public unsafe static napi_value* Init(napi_env* env, napi_value* exports)
+    public unsafe static napi_value Init(napi_env env, napi_value exports)
     {
         var methodName = Marshal.StringToHGlobalAnsi("CSharpAdd");
         napi_property_descriptor[] desc = [
-            new (){utf8name = (sbyte*)methodName, name = null, method = &Add, getter = null, setter = null, value = null,  attributes = napi_property_attributes.napi_default, data = null}
+            new (){utf8name = (sbyte*)methodName, name = default, method = &Add, getter = null, setter = null, value = default,  attributes = napi_property_attributes.napi_default, data = null}
             ];
         fixed (napi_property_descriptor* p = desc)
         {
@@ -26,11 +26,11 @@ public unsafe static class ArkTsLibraryExample
         return exports;
     }
     [UnmanagedCallersOnly(CallConvs = [typeof(CallConvCdecl)])]
-    static unsafe napi_value* Add(napi_env* env, napi_callback_info* info)
+    static unsafe napi_value Add(napi_env env, napi_callback_info info)
     {
         ulong argc = 2;
-        napi_value*[] args = [null, null];
-        fixed (napi_value** p = args)
+        napi_value[] args = [default, default];
+        fixed (napi_value* p = args)
         {
             ace_napi.napi_get_cb_info(env, info, &argc, p, null, null);
         }
@@ -47,7 +47,7 @@ public unsafe static class ArkTsLibraryExample
         double value1;
         ace_napi.napi_get_value_double(env, args[1], &value1);
 
-        napi_value* sum;
+        napi_value sum;
         ace_napi.napi_create_double(env, value0 + value1, &sum);
 
         return sum;

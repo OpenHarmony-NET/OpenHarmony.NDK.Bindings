@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace OpenHarmony.Sdk.Native;
+namespace OpenHarmony.NDK.Bindings.Native;
 
 public static unsafe partial class ace_napi
 {

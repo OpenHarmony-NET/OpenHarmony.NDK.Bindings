@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35410.144 d17.12
+VisualStudioVersion = 17.12.35410.144
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenHarmony.Net", "OpenHarmony.Net\OpenHarmony.Net.csproj", "{56E61895-E8F6-472F-8D73-A34AD009AE76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenHarmony.Demo", "OpenHarmony.Demo\OpenHarmony.Demo.csproj", "{56E61895-E8F6-472F-8D73-A34AD009AE76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenHarmony.Sdk", "OpenHarmony.Sdk\OpenHarmony.Sdk.csproj", "{7D3C255F-1D97-4DB1-B972-54F1BF229207}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenHarmony.NDK.Bindings", "OpenHarmony.NDK.Bindings\OpenHarmony.NDK.Bindings.csproj", "{7D3C255F-1D97-4DB1-B972-54F1BF229207}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

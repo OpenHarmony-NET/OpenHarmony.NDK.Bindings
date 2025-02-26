@@ -1,7 +1,7 @@
 ﻿using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 
-namespace OpenHarmony.Sdk.Native;
+namespace OpenHarmony.NDK.Bindings.Native;
 
 public unsafe static partial class Hilog
 {

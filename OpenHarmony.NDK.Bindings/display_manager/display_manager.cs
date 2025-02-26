@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OpenHarmony.Sdk;
+namespace OpenHarmony.NDK.Bindings.Native;
 
 public unsafe static partial class display_manager
 {

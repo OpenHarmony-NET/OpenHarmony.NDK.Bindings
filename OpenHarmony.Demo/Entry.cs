@@ -1,4 +1,4 @@
-﻿using OpenHarmony.Sdk.Native;
+﻿using OpenHarmony.NDK.Bindings.Native;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -36,7 +36,7 @@ public class Entry
     }
 
     [UnmanagedCallersOnly(CallConvs = [typeof(CallConvCdecl)])]
-    public unsafe static napi_value* Init(napi_env* env, napi_value* exports)
+    public unsafe static napi_value Init(napi_env env, napi_value exports)
     {
         ArkTsLibraryExample.Init(env, exports);
         OpenglExample.Init(env, exports);

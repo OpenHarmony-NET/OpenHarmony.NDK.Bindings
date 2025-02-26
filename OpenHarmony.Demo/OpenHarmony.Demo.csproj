@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OpenHarmony.Sdk\OpenHarmony.Sdk.csproj" />
+    <ProjectReference Include="..\OpenHarmony.NDK.Bindings\OpenHarmony.NDK.Bindings.csproj" />
   </ItemGroup>
 
 </Project>

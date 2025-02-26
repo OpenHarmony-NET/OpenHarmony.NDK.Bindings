@@ -1,5 +1,4 @@
 ﻿using Avalonia.OpenGL.Egl;
-using OpenHarmony.Sdk.Native;
 using Silk.NET.OpenGLES;
 using System;
 using System.Collections.Generic;
@@ -9,14 +8,15 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using OpenHarmony.NDK.Bindings.Native;
 
 namespace OpenHarmony.Net;
 
 public unsafe static class OpenglExample
 {
-    public unsafe static napi_value* Init(napi_env* env, napi_value* exports)
+    public unsafe static napi_value Init(napi_env env, napi_value exports)
     {
-        napi_value* exportInstance = null;
+        napi_value exportInstance = default;
         OH_NativeXComponent* nativeXComponent = null;
         int ret = default;
         var xcomponentName = "__NATIVE_XCOMPONENT_OBJ__";
