@@ -33,8 +33,11 @@ public unsafe struct OH_NativeXComponent_Callback
 
 public unsafe struct OH_NativeXComponent_MouseEvent_Callback
 {
-    public delegate* unmanaged[Cdecl]<OH_NativeXComponent*, void*, void> DispatchMouseEvent;
-    public delegate* unmanaged[Cdecl]<OH_NativeXComponent*, bool, void> DispatchHoverEvent;
+    /** Called when a mouse event is triggered. */
+    public delegate* unmanaged[Cdecl]<OH_NativeXComponent*, void*/*window*/, void> DispatchMouseEvent;
+
+    /** Called when a hover event is triggered. */
+    public delegate* unmanaged[Cdecl]<OH_NativeXComponent* /*component*/, bool/*isHover*/, void> DispatchHoverEvent;
 
 }
 
@@ -480,3 +483,126 @@ public enum OH_NativeXComponent_KeyCode
     KEY_BTN_8 = 3108,
     KEY_BTN_9 = 3109,
 }
+
+public struct OH_NativeXComponent_HistoricalPoint
+{
+    /** Unique identifier of a finger. */
+    public int id;
+    /** X coordinate of the touch point relative to the left edge of the screen. */
+    public float screenX;
+    /** Y coordinate of the touch point relative to the upper edge of the screen. */
+    public float screenY;
+    /** X coordinate of the touch point relative to the left edge of the element to touch. */
+    public float x;
+    /** Y coordinate of the touch point relative to the upper edge of the element to touch. */
+    public float y;
+    /** Touch type of the touch event. */
+    public OH_NativeXComponent_TouchEventType type;
+    /** Contact area between the finger pad and the screen. */
+    public double size;
+    /** Pressure of the current touch event. */
+    public float force;
+    /** Timestamp of the current touch event. */
+    public long timeStamp;
+    /** The angle betweenprojection on plane-X-Y and axis-Z of the current touch event. */
+    public float titlX;
+    /** The angle betweenprojection on plane-Y-Z and axis-Z of the current touch event. */
+    public float titlY;
+    /** The sourceTool of the current touch event. */
+    public OH_NativeXComponent_TouchEvent_SourceTool sourceTool;
+}
+
+/**
+ * @brief Represents the source tool type of TouchEvent
+ *
+ * @since 10
+ * @version 1.0
+ */
+public enum OH_NativeXComponent_TouchEvent_SourceTool
+{
+    OH_NATIVEXCOMPONENT_SOURCETOOL_UNKNOWN = 0,
+    OH_NATIVEXCOMPONENT_SOURCETOOL_FINGER = 1,
+    OH_NATIVEXCOMPONENT_SOURCETOOL_PEN = 2,
+    OH_NATIVEXCOMPONENT_SOURCETOOL_RUBBER = 3,
+    OH_NATIVEXCOMPONENT_SOURCETOOL_BRUSH = 4,
+    OH_NATIVEXCOMPONENT_SOURCETOOL_PENCIL = 5,
+    OH_NATIVEXCOMPONENT_SOURCETOOL_AIRBRUSH = 6,
+    OH_NATIVEXCOMPONENT_SOURCETOOL_MOUSE = 7,
+    OH_NATIVEXCOMPONENT_SOURCETOOL_LENS = 8,
+    OH_NATIVEXCOMPONENT_SOURCETOOL_TOUCHPAD = 9,
+}
+
+public struct OH_NativeXComponent_MouseEvent
+{
+    /** X coordinate of the mouse point relative to the left edge of the element to mouse. */
+    public float x;
+    /** Y coordinate of the mouse point relative to the upper edge of the element to mouse. */
+    public float y;
+    /** X coordinate of the mouse point relative to the left edge of the screen. */
+    public float screenX;
+    /** Y coordinate of the mouse point relative to the upper edge of the screen. */
+    public float screenY;
+    /** Timestamp of the current mouse event. */
+    public long timestamp;
+    /** Mouse event action. */
+    public OH_NativeXComponent_MouseEventAction action;
+    /** Mouse event button. */
+    public OH_NativeXComponent_MouseEventButton button;
+}
+;
+public enum OH_NativeXComponent_MouseEventAction
+{
+    OH_NATIVEXCOMPONENT_MOUSE_NONE = 0,
+    OH_NATIVEXCOMPONENT_MOUSE_PRESS,
+    OH_NATIVEXCOMPONENT_MOUSE_RELEASE,
+    OH_NATIVEXCOMPONENT_MOUSE_MOVE,
+}
+public enum OH_NativeXComponent_MouseEventButton
+{
+    OH_NATIVEXCOMPONENT_NONE_BUTTON = 0,
+    OH_NATIVEXCOMPONENT_LEFT_BUTTON = 0x01,
+    OH_NATIVEXCOMPONENT_RIGHT_BUTTON = 0x02,
+    OH_NATIVEXCOMPONENT_MIDDLE_BUTTON = 0x04,
+    OH_NATIVEXCOMPONENT_BACK_BUTTON = 0x08,
+    OH_NATIVEXCOMPONENT_FORWARD_BUTTON = 0x10,
+}
+
+public struct ArkUI_NodeHandle
+{
+    public nint Pointer;
+}
+public struct ArkUI_UIInputEvent { };
+
+public enum ArkUI_UIInputEvent_Type
+{
+    ARKUI_UIINPUTEVENT_TYPE_UNKNOWN = 0,
+    ARKUI_UIINPUTEVENT_TYPE_TOUCH = 1,
+    ARKUI_UIINPUTEVENT_TYPE_AXIS = 2,
+    /** Mouse event. */
+    ARKUI_UIINPUTEVENT_TYPE_MOUSE = 3,
+}
+
+public enum HitTestMode
+{
+    /** Both the node and its child node respond to the hit test of a touch event, but its sibling node is blocked from
+     *  the hit test.
+     */
+    HTM_DEFAULT = 0,
+
+    /** The node responds to the hit test of a touch event, but its child node and sibling node are blocked from the hit
+     *  test.
+     */
+    HTM_BLOCK,
+
+    /** Both the node and its child node respond to the hit test of a touch event, and its sibling node is also
+     *  considered during the hit test.
+     */
+    HTM_TRANSPARENT,
+
+    /** The node does not respond to the hit test of a touch event, but its child node and sibling node are considered
+     *  during the hit test.
+     */
+    HTM_NONE,
+}
+
+public struct ArkUI_AccessibilityProvider { };

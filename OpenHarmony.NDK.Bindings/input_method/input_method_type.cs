@@ -213,3 +213,62 @@ public enum InputMethod_ErrorCode
      */
     IME_ERR_QUERY_FAILED = 12802001,
 }
+public enum InputMethod_KeyboardStatus
+{
+    /**
+     * The keyboard status is none.
+     */
+    IME_KEYBOARD_STATUS_NONE = 0,
+    /**
+     * The keyboard status is hide.
+     */
+    IME_KEYBOARD_STATUS_HIDE = 1,
+    /**
+     * The keyboard status is show.
+     */
+    IME_KEYBOARD_STATUS_SHOW = 2,
+}
+
+public enum InputMethod_Direction
+{
+    /**
+     * The direction is NONE.
+     */
+    IME_DIRECTION_NONE = 0,
+    /**
+     * The direction is UP.
+     */
+    IME_DIRECTION_UP = 1,
+    /**
+     * The direction is DOWN.
+     */
+    IME_DIRECTION_DOWN = 2,
+    /**
+     * The direction is LEFT.
+     */
+    IME_DIRECTION_LEFT = 3,
+    /**
+     * The direction is RIGHT.
+     */
+    IME_DIRECTION_RIGHT = 4,
+}
+
+public enum InputMethod_ExtendAction
+{
+    /**
+     * Select all text.
+     */
+    IME_EXTEND_ACTION_SELECT_ALL = 0,
+    /**
+     * Cut selected text.
+     */
+    IME_EXTEND_ACTION_CUT = 3,
+    /**
+     * Copy selected text.
+     */
+    IME_EXTEND_ACTION_COPY = 4,
+    /**
+     * Paste from paste board.
+     */
+    IME_EXTEND_ACTION_PASTE = 5,
+}

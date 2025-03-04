@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices;
 
 namespace OpenHarmony.NDK.Bindings.Native;
 
@@ -162,4 +157,110 @@ public unsafe static partial class input_method
     [LibraryImport("libohinputmethod.so")]
     public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetDeleteForwardFunc(InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, int, void> insertTextFunc);
 
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetDeleteBackwardFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, int, void*> deleteBackwardFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetSendKeyboardStatusFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, InputMethod_KeyboardStatus, void> sendKeyboardStatusFunc);
+   
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetSendEnterKeyFunc(InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, InputMethod_EnterKeyType, void> sendEnterKeyFunc);
+ 
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetMoveCursorFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, InputMethod_Direction, void> moveCursorFunc);
+   
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetHandleSetSelectionFunc(InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, int, int, void> handleSetSelectionFunc);
+ 
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetHandleExtendActionFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, InputMethod_ExtendAction, void> handleExtendActionFunc);
+ 
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetGetLeftTextOfCursorFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, int, char*, ulong*, void> getLeftTextOfCursorFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetGetRightTextOfCursorFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, int, char*, ulong*, void> getRightTextOfCursorFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetGetTextIndexAtCursorFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, int> getTextIndexAtCursorFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetReceivePrivateCommandFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, InputMethod_PrivateCommand**, ulong, int > receivePrivateCommandFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetSetPreviewTextFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, char*, ulong, int, int, int> setPreviewTextFunc);
+
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetFinishTextPreviewFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, void> finishTextPreviewFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_GetGetTextConfigFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, InputMethod_TextConfig*, void> getTextConfigFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_GetInsertTextFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, char*, ulong, void> insertTextFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_GetDeleteForwardFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, int, void> deleteForwardFunc);
+ 
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_GetDeleteBackwardFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, int, void>* deleteBackwardFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_GetSendKeyboardStatusFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, InputMethod_KeyboardStatus, void> sendKeyboardStatusFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_GetSendEnterKeyFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, InputMethod_EnterKeyType, void> sendEnterKeyFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_GetMoveCursorFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, InputMethod_Direction, void> moveCursorFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_GetHandleSetSelectionFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, int, int, void> handleSetSelectionFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_GetHandleExtendActionFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, InputMethod_ExtendAction, void> handleExtendActionFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_GetGetLeftTextOfCursorFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, int, char*, ulong*, void> getLeftTextOfCursorFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_GetGetRightTextOfCursorFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, int, char*, ulong*, void> getRightTextOfCursorFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_GetGetTextIndexAtCursorFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, int> getTextIndexAtCursorFunc);
+  
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_GetReceivePrivateCommandFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, InputMethod_PrivateCommand**, ulong, int> receivePrivateCommandFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_GetSetPreviewTextFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, char*, ulong, int, int, int> setPreviewTextFunc);
+
+    [LibraryImport("libohinputmethod.so")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_GetFinishTextPreviewFunc(
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, void> finishTextPreviewFunc);
 }
