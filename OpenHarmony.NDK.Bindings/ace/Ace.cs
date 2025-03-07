@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace OpenHarmony.NDK.Bindings.Native;
 
-public unsafe static partial class ace_ndk
+public unsafe static partial class Ace
 {
 
     [LibraryImport("libace_ndk.z.so")]

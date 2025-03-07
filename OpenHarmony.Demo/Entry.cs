@@ -32,7 +32,7 @@ public class Entry
             reserved_3 = null,
         };
 
-        ace_napi.napi_module_register(&demoModule);
+        node_api.napi_module_register(&demoModule);
     }
 
     [UnmanagedCallersOnly(CallConvs = [typeof(CallConvCdecl)])]

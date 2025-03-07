@@ -19,7 +19,7 @@ public unsafe static class ArkTsLibraryExample
             ];
         fixed (napi_property_descriptor* p = desc)
         {
-            ace_napi.napi_define_properties(env, exports, 1, p);
+            node_api.napi_define_properties(env, exports, 1, p);
         }
         Marshal.FreeHGlobal(methodName);
 
@@ -32,23 +32,23 @@ public unsafe static class ArkTsLibraryExample
         napi_value[] args = [default, default];
         fixed (napi_value* p = args)
         {
-            ace_napi.napi_get_cb_info(env, info, &argc, p, null, null);
+            node_api.napi_get_cb_info(env, info, &argc, p, null, null);
         }
 
         napi_valuetype valuetype0;
-        ace_napi.napi_typeof(env, args[0], &valuetype0);
+        node_api.napi_typeof(env, args[0], &valuetype0);
 
         napi_valuetype valuetype1;
-        ace_napi.napi_typeof(env, args[1], &valuetype1);
+        node_api.napi_typeof(env, args[1], &valuetype1);
 
         double value0;
-        ace_napi.napi_get_value_double(env, args[0], &value0);
+        node_api.napi_get_value_double(env, args[0], &value0);
 
         double value1;
-        ace_napi.napi_get_value_double(env, args[1], &value1);
+        node_api.napi_get_value_double(env, args[1], &value1);
 
         napi_value sum;
-        ace_napi.napi_create_double(env, value0 + value1, &sum);
+        node_api.napi_create_double(env, value0 + value1, &sum);
 
         return sum;
 

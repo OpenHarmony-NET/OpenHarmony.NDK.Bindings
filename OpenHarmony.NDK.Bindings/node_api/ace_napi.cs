@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace OpenHarmony.NDK.Bindings.Native;
 
-public static unsafe partial class ace_napi
+public static unsafe partial class node_api
 {
     [LibraryImport("libace_napi.z.so")]
     public static partial void napi_module_register(napi_module* module);
@@ -59,7 +59,7 @@ public static unsafe partial class ace_napi
     public static partial napi_status napi_get_global(napi_env env, napi_value* result);
 
     [LibraryImport("libace_napi.z.so")]
-    public static partial napi_status napi_get_boolean(napi_env env, [MarshalAs(UnmanagedType.Bool)]bool value, napi_value* result);
+    public static partial napi_status napi_get_boolean(napi_env env, [MarshalAs(UnmanagedType.Bool)] bool value, napi_value* result);
 
 
     [LibraryImport("libace_napi.z.so")]
@@ -322,7 +322,7 @@ public static unsafe partial class ace_napi
         napi_env env,               // [in] NAPI environment handle
         napi_callback_info cbinfo,  // [in] Opaque callback-info handle
         ulong* argc,      // [in-out] Specifies the size of the provided argv array
-                           // and receives the actual count of args.
+                          // and receives the actual count of args.
         napi_value* argv,  // [out] Array of values
         napi_value* this_arg,  // [out] Receives the JS 'this' arg for the call
         void** data);          // [out] Receives the data pointer for the callback.
@@ -341,14 +341,14 @@ public static unsafe partial class ace_napi
                   napi_property_descriptor* properties,
                   napi_value* result);
 
-// Methods to work with external data objects
-[LibraryImport("libace_napi.z.so")]
+    // Methods to work with external data objects
+    [LibraryImport("libace_napi.z.so")]
     public static partial napi_status napi_wrap(napi_env env,
-                                  napi_value js_object,
-                                  void* native_object,
-                                  delegate* unmanaged[Cdecl]<napi_env, void*, void*, void> finalize_cb,
-                                  void* finalize_hint,
-                                  napi_ref* result);
+                                      napi_value js_object,
+                                      void* native_object,
+                                      delegate* unmanaged[Cdecl]<napi_env, void*, void*, void> finalize_cb,
+                                      void* finalize_hint,
+                                      napi_ref* result);
     [LibraryImport("libace_napi.z.so")]
     public static partial napi_status napi_unwrap(napi_env env,
                                         napi_value js_object,
@@ -553,30 +553,30 @@ napi_create_external_arraybuffer(napi_env env,
                                                         long* adjusted_value);
 
 
-// Dates
-[LibraryImport("libace_napi.z.so")]
+    // Dates
+    [LibraryImport("libace_napi.z.so")]
     public static partial napi_status napi_create_date(napi_env env,
-                                         double time,
-                                         napi_value* result);
+                                             double time,
+                                             napi_value* result);
 
-[LibraryImport("libace_napi.z.so")]
+    [LibraryImport("libace_napi.z.so")]
     public static partial napi_status napi_is_date(napi_env env,
-                                     napi_value value,
-                                     bool* is_date);
+                                         napi_value value,
+                                         bool* is_date);
 
-[LibraryImport("libace_napi.z.so")]
+    [LibraryImport("libace_napi.z.so")]
     public static partial napi_status napi_get_date_value(napi_env env,
-                                            napi_value value,
-                                            double* result);
+                                                napi_value value,
+                                                double* result);
 
-// Add finalizer for pointer
-[LibraryImport("libace_napi.z.so")]
+    // Add finalizer for pointer
+    [LibraryImport("libace_napi.z.so")]
     public static partial napi_status napi_add_finalizer(napi_env env,
-                                           napi_value js_object,
-                                           void* native_object,
-                                           delegate* unmanaged[Cdecl]<napi_env, void*, void*, void> finalize_cb,
-                                           void* finalize_hint,
-                                           napi_ref* result);
+                                               napi_value js_object,
+                                               void* native_object,
+                                               delegate* unmanaged[Cdecl]<napi_env, void*, void*, void> finalize_cb,
+                                               void* finalize_hint,
+                                               napi_ref* result);
 
     // BigInt
     [LibraryImport("libace_napi.z.so")]
@@ -593,11 +593,11 @@ napi_create_external_arraybuffer(napi_env env,
                                                      ulong word_count,
                                                  ulong* words,
                                                  napi_value* result);
-[LibraryImport("libace_napi.z.so")]
+    [LibraryImport("libace_napi.z.so")]
     public static partial napi_status napi_get_value_bigint_int64(napi_env env,
-                                                    napi_value value,
-                                                    long* result,
-                                                    bool* lossless);
+                                                        napi_value value,
+                                                        long* result,
+                                                        bool* lossless);
     [LibraryImport("libace_napi.z.so")]
     public static partial napi_status napi_get_value_bigint_uint64(napi_env env,
                                                          napi_value value,

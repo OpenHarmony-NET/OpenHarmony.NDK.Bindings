@@ -21,9 +21,9 @@ public unsafe static class OpenglExample
         int ret = default;
         var xcomponentName = "__NATIVE_XCOMPONENT_OBJ__";
         var xcomponentNamePtr = Marshal.StringToHGlobalAnsi(xcomponentName);
-        if (ace_napi.napi_get_named_property(env, exports, (sbyte*)xcomponentNamePtr, &exportInstance) == napi_status.napi_ok)
+        if (node_api.napi_get_named_property(env, exports, (sbyte*)xcomponentNamePtr, &exportInstance) == napi_status.napi_ok)
         {
-            if (ace_napi.napi_unwrap(env, exportInstance, (void**)&nativeXComponent) == napi_status.napi_ok)
+            if (node_api.napi_unwrap(env, exportInstance, (void**)&nativeXComponent) == napi_status.napi_ok)
             {
                 var p = Marshal.AllocHGlobal(sizeof(OH_NativeXComponent_Callback));
                 ref var g_ComponentCallback = ref Unsafe.AsRef<OH_NativeXComponent_Callback>((void*)p);
@@ -31,7 +31,7 @@ public unsafe static class OpenglExample
                 g_ComponentCallback.OnSurfaceChanged = &OnSurfaceChanged;
                 g_ComponentCallback.OnSurfaceDestroyed = &OnSurfaceDestroyed;
                 g_ComponentCallback.DispatchTouchEvent = &DispatchTouchEvent;
-                ace_ndk.OH_NativeXComponent_RegisterCallback(nativeXComponent, (OH_NativeXComponent_Callback*)p);
+                Ace.OH_NativeXComponent_RegisterCallback(nativeXComponent, (OH_NativeXComponent_Callback*)p);
             }
         }
         Marshal.FreeHGlobal(xcomponentNamePtr);
@@ -46,7 +46,7 @@ public unsafe static class OpenglExample
     [UnmanagedCallersOnly(CallConvs = [typeof(CallConvCdecl)])]
     public static void OnSurfaceCreated(OH_NativeXComponent* component, void* window)
     {
-        ace_ndk.OH_NativeXComponent_RegisterOnFrameCallback(component, &OnSurfaceRendered);
+        Ace.OH_NativeXComponent_RegisterOnFrameCallback(component, &OnSurfaceRendered);
         Hilog.OH_LOG_DEBUG(LogType.LOG_APP, "CSharp", "OnSurfaceCreated");
 
         egl = new EglInterface("libEGL.so");
