@@ -159,7 +159,7 @@ public unsafe static partial class input_method
 
     [LibraryImport("libohinputmethod.so")]
     public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetDeleteBackwardFunc(
-        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, int, void*> deleteBackwardFunc);
+        InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, int, void> deleteBackwardFunc);
 
     [LibraryImport("libohinputmethod.so")]
     public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetSendKeyboardStatusFunc(
