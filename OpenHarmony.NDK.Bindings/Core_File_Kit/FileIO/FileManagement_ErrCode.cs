@@ -1,7 +1,7 @@
 namespace OpenHarmony.NDK.Bindings.Core_File_Kit;
 
 /// <summary>
-/// 文件管理模块错误码。
+///     文件管理模块错误码。
 /// </summary>
 public enum FileManagement_ErrCode
 {
