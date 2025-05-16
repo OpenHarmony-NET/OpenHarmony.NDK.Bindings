@@ -7,4 +7,8 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CppSharp.Runtime" Version="1.1.5.3168" />
+  </ItemGroup>
+
 </Project>
