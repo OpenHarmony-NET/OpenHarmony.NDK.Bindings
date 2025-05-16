@@ -22,4 +22,8 @@ public static unsafe partial class FileUri
 
     [LibraryImport("libohfileuri.so")]
     public static partial FileManagement_ErrCode OH_FileUri_GetFileName(char* uri, uint length, char** result);
+
+    public static void Test()
+    {
+    }
 }
