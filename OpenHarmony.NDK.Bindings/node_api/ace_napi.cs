@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using OpenHarmony.NDK.JSVMAPI;
 
 namespace OpenHarmony.NDK.Bindings.Native;
 
 public static unsafe partial class node_api
 {
+    static void sss()
+    {
+        
+    }
     [LibraryImport("libace_napi.z.so")]
     public static partial void napi_module_register(napi_module* module);
 

@@ -1,0 +1,154 @@
+<ursa:UrsaWindow xmlns="https://github.com/avaloniaui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+                 x:Class="OpenHarmony.NDK.Bindings.GenerationTool.Views.MainWindow"
+                 x:DataType="vm:MainWindowViewModel"
+                 xmlns:ursa="https://irihi.tech/ursa"
+                 xmlns:mantra="https://irihi.tech/mantra"
+                 xmlns:views="clr-namespace:OpenHarmony.NDK.Bindings.GenerationTool.Views"
+                 xmlns:vm="using:OpenHarmony.NDK.Bindings.GenerationTool.ViewModels"
+                 xmlns:micon="using:Material.Icons.Avalonia"
+                 Icon="/Assets/LOGO@0.1x.ico"
+                 Width="800"
+                 Height="450"
+                 CanResize="False"
+                 Title="OpenHarmony.NDK.Bindings.GenerationTool"
+                 WindowStartupLocation="CenterOwner">
+    <ursa:UrsaWindow.TitleBarContent>
+        <ProgressBar IsVisible="{Binding LoadingMessage,Converter={x:Static views:MainWindow.IsLoadingFVC}}"
+                     ShowProgressText="True"
+                     Value="{Binding GenerationProgress}"
+                     Maximum="{Binding GenerationProgressEndValue}"
+                     Minimum="0"
+                     Margin="32,0,32,0" />
+    </ursa:UrsaWindow.TitleBarContent>
+    <ursa:UrsaWindow.RightContent>
+        <StackPanel Orientation="Horizontal">
+            <Menu>
+                <MenuItem Header="{micon:MaterialIconExt Kind=Language}">
+                    <MenuItem Header="中文"
+                              Tag="zh-CN"
+                              GroupName="Text.Language"
+                              ToggleType="Radio"
+                              Loaded="MenuItem_OnLoaded_ChangeLanguage"
+                              Click="MenuItem_OnClick_ChangeLanguage" />
+                    <MenuItem Header="English"
+                              Tag="en-US"
+                              GroupName="Text.Language"
+                              ToggleType="Radio"
+                              Loaded="MenuItem_OnLoaded_ChangeLanguage"
+                              Click="MenuItem_OnClick_ChangeLanguage" />
+                </MenuItem>
+            </Menu>
+            <ursa:ThemeToggleButton IsThreeState="True" />
+        </StackPanel>
+    </ursa:UrsaWindow.RightContent>
+    <Grid RowDefinitions="32,*">
+        <Rectangle Grid.Row="0"
+                   Fill="{DynamicResource SemiGrey0}" />
+        <SplitView Grid.Row="1"
+                   Theme="{DynamicResource VerticalSplitView}"
+                   PanePlacement="Right"
+                   DisplayMode="CompactOverlay"
+                   CompactPaneLength="{Binding LoadingMessage,Converter={x:Static views:MainWindow.GetOpenPaneLengthFVC}}"
+                   OpenPaneLength="{Binding $self.Bounds.Height,Converter={x:Static views:MainWindow.GetTwoThirdsValueFVC}}"
+                   IsPaneOpen="{Binding #ToggleButton.IsChecked,Mode=TwoWay}"
+                   UseLightDismissOverlayMode="True">
+            <SplitView.Transitions>
+                <Transitions>
+                    <DoubleTransition Property="CompactPaneLength" Duration="0:0:0.2" />
+                </Transitions>
+            </SplitView.Transitions>
+            <SplitView.Pane>
+                <Grid RowDefinitions="*,Auto">
+                    <ScrollViewer Grid.Row="0">
+                        <ItemsControl ItemsSource="{Binding View_GenerationLogList}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <ursa:Banner Type="{Binding Type}"
+                                                 ShowIcon="False"
+                                                 HorizontalContentAlignment="Stretch"
+                                                 Margin="3">
+                                        <Expander Header="{Binding Title}">
+                                            <mantra:MarkdownView
+                                                Document="{Binding Content,Converter={x:Static views:MainWindow.GetLogMdFVC}}" />
+                                        </Expander>
+                                    </ursa:Banner>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                    <ToggleButton Grid.Row="1"
+                                  Name="ToggleButton"
+                                  Content="查看生成输出"
+                                  HorizontalAlignment="Stretch"
+                                  Margin="3" />
+                </Grid>
+            </SplitView.Pane>
+            <ursa:LoadingContainer
+                HorizontalContentAlignment="Stretch"
+                VerticalContentAlignment="Stretch"
+                IsLoading="{Binding LoadingMessage,Converter={x:Static views:MainWindow.IsLoadingFVC}}"
+                LoadingMessage="{Binding LoadingMessage,Converter={x:Static views:MainWindow.BusyTypeToUITextFVC}}">
+                <Grid ColumnDefinitions="45*,55*">
+                    <mantra:MarkdownView
+                        Grid.Column="0"
+                        Margin="3,3,0,3"
+                        Document="{DynamicResource MDText.HomeView.md}" />
+                    <Border Grid.Column="1"
+                            Theme="{DynamicResource CardBorder}">
+                        <Grid RowDefinitions="*,Auto,Auto,Auto">
+                            <ursa:Form LabelAlignment="Left"
+                                       LabelPosition="Top"
+                                       LabelWidth="*"
+                                       HorizontalAlignment="Stretch">
+                                <ursa:Form.Styles>
+                                    <Style Selector="ursa|PathPicker">
+                                        <Setter Property="UsePickerType" Value="OpenFolder" />
+                                        <Setter Property="AllowMultiple" Value="False" />
+                                        <Setter Property="IsOmitCommandOnCancel" Value="True" />
+                                        <Setter Property="IsClearSelectionOnCancel" Value="False" />
+                                        <Setter Property="Title" Value="选择文件夹" />
+                                    </Style>
+                                </ursa:Form.Styles>
+                                <ursa:PathPicker
+                                    ursa:FormItem.IsRequired="True"
+                                    ursa:FormItem.Label="OpenHarmony NDK C API头文件仓库路径"
+                                    SuggestedStartPath="{Binding NDK_CAPI_RepoDirPath}"
+                                    SelectedPathsText="{Binding NDK_CAPI_RepoDirPath,Mode=TwoWay}" />
+                                <ursa:PathPicker
+                                    ursa:FormItem.IsRequired="True"
+                                    ursa:FormItem.Label="OpenHarmony NDK C API LLVM头文件路径"
+                                    SuggestedStartPath="{Binding NDK_CAPI_LlvmIncludeDirPath}"
+                                    SelectedPathsText="{Binding NDK_CAPI_LlvmIncludeDirPath,Mode=TwoWay}" />
+                                <ursa:PathPicker
+                                    ursa:FormItem.IsRequired="True"
+                                    ursa:FormItem.Label="OpenHarmony NDK C API Sysroot路径"
+                                    SuggestedStartPath="{Binding NDK_CAPI_SysRootDirPath}"
+                                    SelectedPathsText="{Binding NDK_CAPI_SysRootDirPath,Mode=TwoWay}" />
+                                <ursa:PathPicker
+                                    ursa:FormItem.IsRequired="True"
+                                    ursa:FormItem.Label="生成输出路径"
+                                    SuggestedStartPath="{Binding OutputDirectoryPath}"
+                                    SelectedPathsText="{Binding OutputDirectoryPath,Mode=TwoWay}" />
+                            </ursa:Form>
+                            <ursa:Divider Grid.Row="1"
+                                          Margin="0,3,0,3" />
+                            <Button Grid.Row="2"
+                                    Content="启动生成"
+                                    HorizontalAlignment="Stretch"
+                                    Command="{Binding StartFullGenerationCommand}" />
+                            <ToggleButton Grid.Row="3"
+                                          Margin="0,3,0,0"
+                                          Content="查看上一次的生成输出"
+                                          HorizontalAlignment="Stretch"
+                                          IsChecked="{Binding #ToggleButton.IsChecked,Mode=TwoWay}" />
+                        </Grid>
+                    </Border>
+                </Grid>
+            </ursa:LoadingContainer>
+        </SplitView>
+    </Grid>
+</ursa:UrsaWindow>
