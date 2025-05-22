@@ -214,7 +214,7 @@ namespace OpenHarmony.NDK.Bindings.Media_Kit.AVPlayer
         /// <returns></returns>
         [Obsolete]
         [LibraryImport("libavplayer.so")]
-        public static partial OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer* player, [MarshalUsing(typeof(AVPlayerCallbackMarshaller))] in AVPlayerCallback callback);
+        public static partial OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer* player, AVPlayerCallback callback);
         /// <summary>
         /// 选择音频或字幕轨道
         /// </summary>
@@ -247,7 +247,7 @@ namespace OpenHarmony.NDK.Bindings.Media_Kit.AVPlayer
         /// <param name="callback"></param>
         /// <returns></returns>
         [LibraryImport("libavplayer.so")]
-        public static partial OH_AVErrCode OH_AVPlayer_SetMediaKeySystemInfoCallback(OH_AVPlayer* player, Player_MediaKeySystemInfoCallback callback);
+        public static partial OH_AVErrCode OH_AVPlayer_SetMediaKeySystemInfoCallback(OH_AVPlayer* player, delegate* unmanaged[Cdecl]<OH_AVPlayer* , DRM_MediaKeySystemInfo* > callback);
         /// <summary>
         /// 获取媒体密钥系统信息以创建媒体密钥会话
         /// </summary>
@@ -265,6 +265,7 @@ namespace OpenHarmony.NDK.Bindings.Media_Kit.AVPlayer
         /// <returns></returns>
         [LibraryImport("libavplayer.so")]
         public static partial OH_AVErrCode OH_AVPlayer_SetDecryptionConfig(OH_AVPlayer* player, MediaKeySession* mediaKeySession, OH_Bool secureVideoPath);
+
         /// <summary>
         /// 设置播放器消息回调监听函数
         /// </summary>
@@ -273,7 +274,10 @@ namespace OpenHarmony.NDK.Bindings.Media_Kit.AVPlayer
         /// <param name="userData"></param>
         /// <returns></returns>
         [LibraryImport("libavplayer.so")]
-        public static partial OH_AVErrCode OH_AVPlayer_SetOnInfoCallback(OH_AVPlayer* player, OH_AVPlayerOnInfoCallback callback, IntPtr userData);
+        public static partial OH_AVErrCode OH_AVPlayer_SetOnInfoCallback(OH_AVPlayer* player,
+            delegate* unmanaged[Cdecl]<OH_AVPlayer*, AVPlayerOnInfoType, OH_AVFormat*, void*, void> callback,
+            IntPtr userData);
+
         /// <summary>
         /// 设置播放器错误回调监听函数
         /// </summary>
@@ -282,6 +286,7 @@ namespace OpenHarmony.NDK.Bindings.Media_Kit.AVPlayer
         /// <param name="userData"></param>
         /// <returns></returns>
         [LibraryImport("libavplayer.so")]
-        public static partial OH_AVErrCode OH_AVPlayer_SetOnErrorCallback(OH_AVPlayer* player, OH_AVPlayerOnErrorCallback callback, IntPtr userData);
+        public static partial OH_AVErrCode OH_AVPlayer_SetOnErrorCallback(OH_AVPlayer* player,
+            delegate* unmanaged[Cdecl]<OH_AVPlayer*, int, nint, void*, void> callback, IntPtr userData);
     }
 }
