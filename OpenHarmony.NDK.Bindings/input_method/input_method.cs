@@ -2,6 +2,10 @@
 
 namespace OpenHarmony.NDK.Bindings.Native;
 
+//delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, char*, ulong, void> insertTextFunc
+
+[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+public unsafe delegate void InsertTextFunc(InputMethod_TextEditorProxy* proxy, char* text, ulong length);
 public unsafe static partial class input_method
 {
     [LibraryImport("libohinputmethod.so")]
@@ -153,6 +157,10 @@ public unsafe static partial class input_method
 
     [LibraryImport("libohinputmethod.so")]
     public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetInsertTextFunc(InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, char*, ulong, void> insertTextFunc);
+
+    [LibraryImport("libohinputmethod.so", EntryPoint = "OH_TextEditorProxy_SetInsertTextFunc")]
+    public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetInsertTextFuncTest(
+        InputMethod_TextEditorProxy* proxy, IntPtr insertTextFunc);
 
     [LibraryImport("libohinputmethod.so")]
     public static partial InputMethod_ErrorCode OH_TextEditorProxy_SetDeleteForwardFunc(InputMethod_TextEditorProxy* proxy, delegate* unmanaged[Cdecl]<InputMethod_TextEditorProxy*, int, void> insertTextFunc);
