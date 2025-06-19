@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <ApplicationIcon>Assets\LOGO@0.1x.ico</ApplicationIcon>
+        <LangVersion>preview</LangVersion>
+        <!--        <PublishAot>true</PublishAot>-->
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AvaloniaResource Include="Assets\Fonts\HarmonyOS_Sans_SC_Regular.ttf"/>
+        <AvaloniaResource Include="Assets\LOGO%400.1x.ico"/>
+        <AvaloniaResource Include="Locales\**\*.md"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <RdXmlFile Include="rd.xml"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.3.1"/>
+        <PackageReference Include="Avalonia.Desktop" Version="11.3.1"/>
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.3.1">
+            <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+            <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Avalonia.ReactiveUI" Version="11.3.1"/>
+        <PackageReference Include="HotAvalonia" Version="3.0.0" PrivateAssets="All" Publish="True"/>
+        <PackageReference Include="Irihi.Mantra.Markdown" Version="0.9.0-nightly-20250613162226"/>
+        <PackageReference Include="Irihi.Mantra.Markdown.Plugin.AvaloniaHybrid" Version="0.9.0-nightly-20250613162226"/>
+        <PackageReference Include="Irihi.Mantra.Markdown.Plugin.FencedCodeBlock" Version="0.9.0-nightly-20250613162226"/>
+        <PackageReference Include="Irihi.Mantra.Markdown.Themes.Semi" Version="0.9.0-nightly-20250613162226"/>
+        <PackageReference Include="Irihi.Ursa" Version="1.11.1"/>
+        <PackageReference Include="Irihi.Ursa.ReactiveUIExtension" Version="1.0.1"/>
+        <PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.11.1"/>
+        <PackageReference Include="JetBrains.Annotations" Version="2025.1.0-eap1"/>
+        <PackageReference Include="Material.Icons.Avalonia" Version="3.0.0-preview1.1"/>
+        <PackageReference Include="ReactiveMarbles.ObservableEvents.SourceGenerator" Version="1.3.1"/>
+        <PackageReference Include="ReactiveUI.SourceGenerators" Version="2.2.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="ReactiveUI.Validation" Version="4.1.1"/>
+        <PackageReference Include="Semi.Avalonia" Version="11.2.1.8"/>
+        <PackageReference Include="Semi.Avalonia.TreeDataGrid" Version="11.0.10.4"/>
+        <PackageReference Include="WCKYWCKF.akavache-aot" Version="10.1.6.6-pre"/>
+    </ItemGroup>
+</Project>

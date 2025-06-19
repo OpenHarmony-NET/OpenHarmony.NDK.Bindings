@@ -1,0 +1,39 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="OpenHarmony.NDK.Bindings.GenerationTool.App"
+             xmlns:semi="https://irihi.tech/semi"
+             xmlns:semi-ursa="https://irihi.tech/ursa/themes/semi"
+             xmlns:mantra="https://irihi.tech/mantra"
+             xmlns:mcion="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:local="using:OpenHarmony.NDK.Bindings.GenerationTool"
+             RequestedThemeVariant="Default">
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+    <Application.Resources>
+        <ResourceDictionary>
+            <FontFamily x:Key="DefaultFontFamily">avares://OpenHarmony.NDK.Bindings.GenerationTool/Assets/Fonts/#HarmonyOS Sans SC</FontFamily>
+        </ResourceDictionary>
+    </Application.Resources>
+    <Application.Styles>
+        <semi:SemiTheme Locale="zh-CN" />
+        <semi-ursa:SemiTheme Locale="zh-CN" />
+        <semi:SemiPopupAnimations />
+        <mcion:MaterialIconStyles />
+        <mantra:SemiTheme />
+        <semi:TreeDataGridSemiTheme />
+        <!-- 高亮代码块 -->
+        <Style Selector="mantra|MarkdownViewFencedCodeBlock">
+            <Setter Property="Foreground" Value="{DynamicResource SemiColorText0}" />
+            <Setter Property="FontFamily" Value="{DynamicResource CodeFontFamily}" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="ContainerTemplate">
+                <mantra:ContainerTemplate>
+                    <mantra:AdvancedCodeBlockContainer />
+                </mantra:ContainerTemplate>
+            </Setter>
+        </Style>
+    </Application.Styles>
+</Application>
