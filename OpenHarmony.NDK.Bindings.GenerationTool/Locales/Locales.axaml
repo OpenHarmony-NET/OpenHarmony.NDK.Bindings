@@ -1,0 +1,17 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="OpenHarmony.NDK.Bindings.GenerationTool.Locales">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceInclude x:Key="zh-CN" Source="zh-CN/zh-CN.axaml" />
+            <ResourceInclude x:Key="en-US" Source="en-US/en-US.axaml" />
+        </ResourceDictionary>
+    </Styles.Resources>
+</Styles>

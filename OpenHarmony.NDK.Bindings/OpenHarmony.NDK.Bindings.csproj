@@ -7,4 +7,34 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="rawfile.cs" />
+    <Compile Remove="purgeable_memory.cs" />
+    <Compile Remove="ohaudio.cs" />
+    <Compile Remove="net.cs" />
+    <Compile Remove="native_vsync.cs" />
+    <Compile Remove="native_effect.cs" />
+    <Compile Remove="native_drawing.cs" />
+    <Compile Remove="native_color_space_manager.cs" />
+    <Compile Remove="native_buffer.cs" />
+    <Compile Remove="napi.cs" />
+    <Compile Remove="multimodalinput.cs" />
+    <Compile Remove="multimedia.cs" />
+    <Compile Remove="inputmethod.cs" />
+    <Compile Remove="huks.cs" />
+    <Compile Remove="hitrace.cs" />
+    <Compile Remove="hilog.cs" />
+    <Compile Remove="hid.cs" />
+    <Compile Remove="hiappevent.cs" />
+    <Compile Remove="ffrt.cs" />
+    <Compile Remove="database.cs" />
+    <Compile Remove="background_process_manager.cs" />
+    <Compile Remove="ark_runtime.cs" />
+    <Compile Remove="NotificationKit.cs" />
+    <Compile Remove="LocationKit.cs" />
+    <Compile Remove="CryptoArchitectureKit.cs" />
+    <Compile Remove="ConnectivityKit.cs" />
+    <Compile Remove="BasicServicesKit.cs" />
+  </ItemGroup>
+
 </Project>
