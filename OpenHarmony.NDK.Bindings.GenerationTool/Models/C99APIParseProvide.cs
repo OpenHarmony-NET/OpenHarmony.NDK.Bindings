@@ -45,9 +45,13 @@ public static class
         var sysrootIncludeDirPath = Path.Combine(sysrootDirPath, "usr", "include");
         List<string> arguments =
         [
+            "--config", "preview-codegen",
+            "--config", "exclude-fnptr-codegen",
+            "--config", "generate-macro-bindings",
+            "-F", $"{Path.Combine(sysrootDirPath, "usr", "include", startParseInfo.MethodClassName)}",
             "-a", $"--sysroot={sysrootDirPath}",
             "-a", "-nostdinc++",
-            "-a", "--target=aarch64-linux-musl",
+            "-a", "--target aarch64-linux-musl",
             "-I", $"{sysrootIncludeDirPath}",
             "-I", $"{llvmIncludeDirPath}",
             "-I", $"{Path.Combine(sysrootIncludeDirPath, "aarch64-linux-ohos")}",

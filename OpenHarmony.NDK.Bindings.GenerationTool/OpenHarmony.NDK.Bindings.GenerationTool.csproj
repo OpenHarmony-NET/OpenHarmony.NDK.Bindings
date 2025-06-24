@@ -8,7 +8,7 @@
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <ApplicationIcon>Assets\LOGO@0.1x.ico</ApplicationIcon>
         <LangVersion>preview</LangVersion>
-        <!--        <PublishAot>true</PublishAot>-->
+        <PublishAot>true</PublishAot>
     </PropertyGroup>
 
     <ItemGroup>

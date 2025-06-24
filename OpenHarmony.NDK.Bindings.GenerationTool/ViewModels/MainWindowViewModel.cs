@@ -139,42 +139,37 @@ public partial class MainWindowViewModel : ViewModelBase, IValidatableViewModel
                 .ToList();
 
             GenerationProgressEndValue = startParseInfos.Count;
-            GenerationProgress = 1;
             _generationLogList.Clear();
             foreach (var startParseInfo in startParseInfos)
-                try
+            {
+                var task = C99APIParseProvide.StartParse(
+                    NDK_CAPI_SysRootDirPath!,
+                    NDK_CAPI_LlvmIncludeDirPath!,
+                    startParseInfo);
+                GenerationProgress++;
+                if (task is null)
+                    continue;
+                var str = await task.StandardOutput.ReadToEndAsync();
+                await task.WaitForExitAsync();
+                Notification notification = new()
                 {
-                    var task = C99APIParseProvide.StartParse(
-                        NDK_CAPI_SysRootDirPath!,
-                        NDK_CAPI_LlvmIncludeDirPath!,
-                        startParseInfo);
-                    GenerationProgress++;
-                    if (task is null)
-                        continue;
-                    var str = await task.StandardOutput.ReadToEndAsync();
-                    await task.WaitForExitAsync();
-                    Notification notification = new()
-                    {
-                        Title = $"{startParseInfo.MethodClassName}",
-                        Content = str,
-                        Type = str.Contains("due to one or more errors listed above.")
-                            ? NotificationType.Error
-                            : NotificationType.Success
-                    };
-                    _generationLogList.Add(notification);
-                }
-                catch (Exception e)
-                {
-                    MessageBus.Current.SendMessage(e);
-                    break;
-                }
-
-            LoadingMessage = BusyType.None;
+                    Title = $"{startParseInfo.MethodClassName}",
+                    Content = str,
+                    Type = str.Contains("due to one or more errors listed above.")
+                        ? NotificationType.Error
+                        : NotificationType.Success
+                };
+                _generationLogList.Add(notification);
+            }
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            MessageBus.Current.SendMessage(e);
+        }
+        finally
+        {
+            LoadingMessage = BusyType.None;
+            GenerationProgress = 0;
         }
     }
 }
