@@ -54,6 +54,11 @@ public struct napi_async_context
 {
     public nint Pointer;
 }
+
+public struct napi_threadsafe_function
+{
+    public nint Pointer;
+}
 public enum napi_status
 {
     napi_ok,
@@ -119,6 +124,13 @@ public enum napi_property_attributes
     napi_default_method = napi_writable | napi_configurable,
     napi_default_jsproperty = napi_writable | napi_enumerable | napi_configurable,
 }
+
+public enum napi_threadsafe_function_call_mode
+{
+    napi_tsfn_nonblocking, // The call will not block the calling thread.
+    napi_tsfn_blocking,    // The call may block the calling thread.
+}
+
 public enum napi_valuetype
 {
     // ES6 types (corresponds to typeof)
