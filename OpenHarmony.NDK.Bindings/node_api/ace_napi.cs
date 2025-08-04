@@ -341,6 +341,24 @@ public static unsafe partial class node_api
                   napi_property_descriptor* properties,
                   napi_value* result);
 
+    [LibraryImport("libace_napi.z.so")]
+    public static partial napi_status napi_create_threadsafe_function(napi_env env,
+        napi_value func,
+        napi_value async_resource,
+        napi_value async_resource_name,
+        ulong max_queue_size,
+        ulong initial_thread_count,
+        void* thread_finalize_data,
+        delegate* unmanaged[Cdecl]<napi_env, void*, void*, void> thread_finalize_cb,
+        void* context,
+        delegate* unmanaged[Cdecl]<napi_env, napi_value, void*, void*, void> call_js_cb,
+        napi_threadsafe_function* result);
+    
+    [LibraryImport("libace_napi.z.so")]
+    public static partial napi_status napi_call_threadsafe_function(napi_threadsafe_function func,
+        void *data,
+        napi_threadsafe_function_call_mode is_blocking);
+
     // Methods to work with external data objects
     [LibraryImport("libace_napi.z.so")]
     public static partial napi_status napi_wrap(napi_env env,
