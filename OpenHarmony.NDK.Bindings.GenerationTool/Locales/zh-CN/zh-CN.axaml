@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <x:String x:Key="Text.SelectCapiWarehouseLocation">选择CAPI仓库</x:String>
+    <x:String x:Key="Text.OutputPathManagement">生成</x:String>
+    <x:String x:Key="Text.ViewCurrentGenerationRules">查看当前生成规则</x:String>
+    <x:String x:Key="Text.FullGeneration">全量生成</x:String>
+    <x:String x:Key="Text.Generation">生成</x:String>
+    <x:String x:Key="Text.RunHotReloadCode">运行热重载代码</x:String>
+    <x:String x:Key="Text.Language">语言</x:String>
+    <x:String x:Key="Text.LoadingCapiRepository">加载CAPI仓库中......</x:String>
+    <x:String x:Key="Text.GeneratingCode">正在生成代码......</x:String>
+</ResourceDictionary>
