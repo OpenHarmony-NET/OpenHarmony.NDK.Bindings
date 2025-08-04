@@ -349,7 +349,7 @@ public static unsafe partial class node_api
         ulong max_queue_size,
         ulong initial_thread_count,
         void* thread_finalize_data,
-        delegate* unmanaged[Cdecl]<napi_env, void*, void*> thread_finalize_cb,
+        delegate* unmanaged[Cdecl]<napi_env, void*, void*, void> thread_finalize_cb,
         void* context,
         delegate* unmanaged[Cdecl]<napi_env, napi_value, void*, void*, void> call_js_cb,
         napi_threadsafe_function* result);
